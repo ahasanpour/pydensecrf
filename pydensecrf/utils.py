@@ -190,6 +190,6 @@ def _create_pairwise_bilateral_2d(sx, sy, sr, sg, sb, img):
             feats[2, i, j] = img[i, j, 0] / sr
             feats[3, i, j] = img[i, j, 1] / sg
             feats[4, i, j] = img[i, j, 2] / sb
-            feats[5, i, j] = 1/(np.log(img[i, j, 0])+1.01)
+            feats[5, i, j] = 1/(np.log(img[i, j, 0])+1.01)  #my feature
     return feats.reshape([feat_size, -1])
 
