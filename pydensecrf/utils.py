@@ -181,7 +181,7 @@ def _create_pairwise_bilateral_2d(sx, sy, sr, sg, sb, img):
     A simple reference implementation for the 2D case. The ND implementation
     is faster.
     """
-    feat_size = 5
+    feat_size = 6
     feats = np.zeros((feat_size, img.shape[0], img.shape[1]), dtype=np.float32)
     for i in range(img.shape[0]):
         for j in range(img.shape[1]):
@@ -190,5 +190,6 @@ def _create_pairwise_bilateral_2d(sx, sy, sr, sg, sb, img):
             feats[2, i, j] = img[i, j, 0] / sr
             feats[3, i, j] = img[i, j, 1] / sg
             feats[4, i, j] = img[i, j, 2] / sb
+            feats[5, i, j] = 1/(np.log(img[i, j, 0])+1.01)
     return feats.reshape([feat_size, -1])
 
